@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+  --negative-number: -70px;
+  --positive-large-number: 70px;
+  --positive-small-number: 35px
+}
+body {
+    background: url('../img/fireplace-wall.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100dvh;
+}
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.digit {
+  display: grid;
+  grid-template-columns: repeat(3, 25px);
+  grid-template-rows: repeat(5, 25px);
+  gap: 10px;
+  grid-template-areas:
+    "div1 div2 div3"
+    "div4 div5 div6"
+    "div7 div8 div9"
+    "div10 div11 div12"
+    "div13 div14 div15";
+}
+.sep {
+  display: grid;
+  grid-template-columns: repeat(1, 25px);
+  grid-template-rows: repeat(2, 25px);
+  gap: 10px;
+  div {
+    background-color: rgb(243, 243, 243);
+    box-shadow: 0 0 30px #00ffcc55;
+    border-radius: 5px;
+  }
+}
+#div1, #div2, #div3, #div4, #div5, #div6, #div7, #div8,
+#div9, #div10, #div11, #div12, #div13, #div14, #div15 {
+  background-color: rgb(243, 243, 243);
+  box-shadow: 0 0 30px #00ffcc55;
+  border-radius: 5px;
+  transition: 250ms ease;
+}
+#div1 {
+  grid-area: div1;
+}
+#div2 {
+  grid-area: div2;
+}
+#div3 {
+  grid-area: div3;
+}
+#div4 {
+  grid-area: div4;
+}
+#div5 {
+  grid-area: div5;
+  display: none;
+}
+#div6 {
+  grid-area: div6;
+}
+#div7 {
+  grid-area: div7;
+}
+#div8 {
+  grid-area: div8;
+}
+#div9 {
+  grid-area: div9;
+}
+#div10 {
+  grid-area: div10;
+}
+#div11 {
+  grid-area: div11;
+  display: none;
+}
+#div12 {
+  grid-area: div12;
+}
+#div13 {
+  grid-area: div13;
+}
+#div14 {
+  grid-area: div14;
+}
+#div15 {
+  grid-area: div15;
+}
+.onSite {
+  transform: translateX(0);
+}
+.oneStep {
+  transform: translateX(var(--positive-small-number));
+}
+.twoSteps {
+  transform: translateX(var(--positive-large-number));
+}
+.twoStepsPress {
+  transform: translateX(var(--negative-number));
+}
+@media (max-width: 900px) {
+  :root {
+    --negative-number: -46px;
+    --positive-large-number: 46px;
+    --positive-small-number: 21px
+  }
+  .digit {
+    grid-template-columns: repeat(3, 15px);
+    grid-template-rows: repeat(5, 15px);
+    gap: 8px;
+  }
+  .sep {
+    grid-template-columns: repeat(1, 15px);
+    grid-template-rows: repeat(2, 15px);
+    gap: 8px;
+    div {
+      border-radius: 3px;
+    }
+  }
+  #div1, #div2, #div3, #div4, #div5, #div6, #div7, #div8,
+  #div9, #div10, #div11, #div12, #div13, #div14, #div15 {
+    border-radius: 3px;
+  }
+}
+@media (max-width: 680px) {
+  :root {
+    --negative-number: -30px;
+    --positive-large-number: 30px;
+    --positive-small-number: 15px
+  }
+  .clock {
+    gap: 20px;
+  }
+  .digit {
+    grid-template-columns: repeat(3, 10px);
+    grid-template-rows: repeat(5, 10px);
+    gap: 5px;
+  }
+  .sep {
+    grid-template-columns: repeat(1, 10px);
+    grid-template-rows: repeat(2, 10px);
+    gap: 5px;
+    div {
+      border-radius: 2px;
+    }
+  }
+  #div1, #div2, #div3, #div4, #div5, #div6, #div7, #div8,
+  #div9, #div10, #div11, #div12, #div13, #div14, #div15 {
+    border-radius: 2px;
+  }
+}
+@media (max-width: 505px) {
+  :root {
+    --negative-number: -22px;
+    --positive-large-number: 22px;
+    --positive-small-number: 11px
+  }
+  .clock {
+    gap: 10px;
+  }
+  .digit {
+    grid-template-columns: repeat(3, 8px);
+    grid-template-rows: repeat(5, 8px);
+    gap: 3px;
+  }
+  .sep {
+    grid-template-columns: repeat(1, 8px);
+    grid-template-rows: repeat(2, 8px);
+    gap: 3px;
+    div {
+      border-radius: 1px;
+    }
+  }
+  #div1, #div2, #div3, #div4, #div5, #div6, #div7, #div8,
+  #div9, #div10, #div11, #div12, #div13, #div14, #div15 {
+    border-radius: 1px;
+  }
+}
