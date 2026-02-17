@@ -8,18 +8,65 @@
   --positive-large-number: 70px;
   --positive-small-number: 35px
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
 body {
+    min-height: 100vh;
     background: url('../img/fireplace-wall.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100dvh;
+}
+.glass-panel {
+  width: max-content;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.item {
+  cursor: pointer;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(150,255,230,0.12);
+  transition: opacity 0.3s;
+}
+.item:hover {
+  opacity: 0.8;
+}
+.item.active {
+  filter: drop-shadow(0 0 5px rgba(0, 255, 170, 0.5));
+}
+.digital-clock-img {
+  width: 65px;
+  height: 25px;
+}
+.analog-clock-img {
+  width: 60px;
+  height: 50px;
+}
+.calendar-img {
+  width: 60px;
+  height: 40px;
 }
 .clock {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding-top: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,6 +167,21 @@ body {
     --positive-large-number: 46px;
     --positive-small-number: 21px
   }
+  .glass-panel {
+    padding: 15px;
+  }
+  .digital-clock-img {
+    width: 50px;
+    height: 25px;
+  }
+  .analog-clock-img {
+    width: 55px;
+    height: 40px;
+  }
+  .calendar-img {
+    width: 60px;
+    height: 30px;
+  }
   .digit {
     grid-template-columns: repeat(3, 15px);
     grid-template-rows: repeat(5, 15px);
@@ -143,6 +205,23 @@ body {
     --negative-number: -30px;
     --positive-large-number: 30px;
     --positive-small-number: 15px
+  }
+  .glass-panel {
+    top: unset;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 12px;
+  }
+  .menu {
+    flex-direction: row;
+    align-items: center;
+  }
+  .item {
+    padding-bottom: 0;
+    border-bottom: none;
   }
   .clock {
     gap: 20px;
