@@ -18,13 +18,14 @@ const handleLocation = async () => {
     }
 }
 
-const route = (event) => {
+document.querySelector("nav").addEventListener("click", (event) => {
+    const link = event.target.closest("a")
+    if (!link) return
     event.preventDefault()
-    window.location.hash = event.target.href.split("#")[1]
+    window.location.hash = link.href.split("#")[1]
     handleLocation()
-}
+})
 
 window.onhashchange = handleLocation
-window.route = route
 
 handleLocation()
