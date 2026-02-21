@@ -1,8 +1,8 @@
 const routes = {
-    404: { html: "/pages/404.html" },
-    "/":      { html: "/pages/digitalClock.html", js: "/js/digitalClock.js" },
-    "/analogClock": { html: "/pages/analogClock.html", js: "/js/analogClock.js" },
-    "/calendar": { html: "/pages/calendar.html", js: "/js/calendar.js" },
+    404: { html: "pages/404.html" },
+    "/":            { html: "pages/digitalClock.html", js: "./js/digitalClock.js" },
+    "/analogClock": { html: "pages/analogClock.html",  js: "./js/analogClock.js" },
+    "/calendar":    { html: "pages/calendar.html",     js: "./js/calendar.js" },
 }
 
 const handleLocation = async () => {
