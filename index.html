@@ -6,33 +6,30 @@
     <title>JS Temporal API</title>
     <link rel="shortcut icon" href="img/time-stopwatch-watch.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/script.js"></script>
 </head>
 <body>
-
    <nav class="glass-panel">
        <ul class="menu">
            <li class="item active">
-               <img class="digital-clock-img" src="img/digital-clock.svg" alt="digital clock">
+               <a href="/#/">
+                   <img class="digital-clock-img" src="img/digital-clock.svg" alt="digital clock">
+               </a>
            </li>
            <li class="item">
-               <img class="analog-clock-img" src="img/analog-clock.svg" alt="analog clock">
+               <a href="/#/analogClock">
+                   <img class="analog-clock-img" src="img/analog-clock.svg" alt="analog clock">
+               </a>
            </li>
            <li class="item">
-               <img class="calendar-img" src="img/calendar.svg" alt="calendar">
+               <a href="/#/calendar">
+                   <img class="calendar-img" src="img/calendar.svg" alt="calendar">
+               </a>
            </li>
        </ul>
    </nav>
 
-   <div class="clock">
-        <div class="digit" id="h1"></div>
-        <div class="digit" id="h2"></div>
-        <div class="sep"><div></div><div></div></div>
-        <div class="digit" id="m1"></div>
-        <div class="digit" id="m2"></div>
-        <div class="sep"><div></div><div></div></div>
-        <div class="digit" id="s1"></div>
-        <div class="digit" id="s2"></div>
-    </div>
+   <main></main>
+
+   <script type="module" src="js/router.js"></script>
 </body>
 </html>
