@@ -1,10 +1,18 @@
-const routes = {
-    404: { html: "pages/404.html" },
-    "/":            { html: "pages/digitalClock.html", js: "./js/digitalClock.js" },
-    "/analogClock": { html: "pages/analogClock.html",  js: "./js/analogClock.js" },
-    "/calendar":    { html: "pages/calendar.html",     js: "./js/calendar.js" },
-}
+// const routes = {
+//     404: { html: "/pages/404.html" },
+//     "/":      { html: "/pages/digitalClock.html", js: "/js/digitalClock.js" },
+//     "/analogClock": { html: "/pages/analogClock.html", js: "/js/analogClock.js" },
+//     "/calendar": { html: "/pages/calendar.html", js: "/js/calendar.js" },
+// }
 
+const base = new URL("..", import.meta.url).href
+
+const routes = {
+    404: { html: `${base}pages/404.html` },
+    "/":            { html: `${base}pages/digitalClock.html`, js: `${base}js/digitalClock.js` },
+    "/analogClock": { html: `${base}pages/analogClock.html`,  js: `${base}js/analogClock.js` },
+    "/calendar":    { html: `${base}pages/calendar.html`,     js: `${base}js/calendar.js` },
+}
 const handleLocation = async () => {
     const path = window.location.hash.slice(1) || "/"
     const route = routes[path] || routes[404]
