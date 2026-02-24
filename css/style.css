@@ -68,7 +68,6 @@ body {
 }
 main {
   height: 100dvh;
-  overflow: hidden;
 }
 /* digital clock */
 .digital-clock {
@@ -205,8 +204,8 @@ main {
 }
 .analog-clock::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: clamp(10px, 2.5vw, 20px);
+  height: clamp(10px, 2.5vw, 20px);
   background: #00ffcc;
   border-radius: 50%;
   position: absolute;
