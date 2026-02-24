@@ -67,7 +67,8 @@ body {
   height: 40px;
 }
 main {
-  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 /* digital clock */
 .digital-clock {
