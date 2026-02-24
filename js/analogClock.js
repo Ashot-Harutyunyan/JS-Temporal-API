@@ -3,7 +3,6 @@
 export const init = () => {
 
     const analogClock = document.querySelector('.analog-clock')
-    const numbers = createAnalogClockElement('div', { className: 'numbers' })
 
     function createAnalogClockElement(tagName, {className, cssVars, text}) {
         const element = document.createElement(tagName)
@@ -16,6 +15,8 @@ export const init = () => {
         }
         return element
     }
+
+    const numbers = createAnalogClockElement('div', { className: 'numbers' })
 
     for (let i = 0; i < 12; i++) {
         const number = createAnalogClockElement('div', { className: 'number', cssVars: { '--i': i + 1 } })
