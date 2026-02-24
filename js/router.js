@@ -24,9 +24,7 @@ document.querySelector("nav").addEventListener("click", (event) => {
     if (!link) return
     event.preventDefault()
     window.location.hash = link.href.split("#")[1]
-    handleLocation()
 })
 
 window.onhashchange = handleLocation
-
 handleLocation()
