@@ -17,7 +17,7 @@ export const init = () => {
         monthYear.lastElementChild.textContent = viewDate.year
 
         dateEl.textContent = currentDate.toString().split('-').join(' ')
-        progressEl.textContent =`${currentDate.dayOfYear} / ${currentDate.daysInYear}`
+        progressEl.textContent = `${currentDate.dayOfYear} / ${currentDate.daysInYear}`
         monthEl.textContent = currentDate.month.toString().padStart(2, '0')
     }
 
@@ -25,21 +25,20 @@ export const init = () => {
         calendarDays.innerHTML = ''
         const fragment = document.createDocumentFragment()
         const monthName = viewDate.toLocaleString("en-US", { month: "long" })
-        const firstDayOfMonth = viewDate
         const daysInMonth = viewDate.daysInMonth
-        let offset = firstDayOfMonth.dayOfWeek - 1
+        let offset = viewDate.dayOfWeek - 1
 
         updateCalendarInfo(monthName)
 
-        for(let i = 0; i < offset; i++) {
+        for (let i = 0; i < offset; i++) {
             fragment.appendChild(document.createElement('div'))
         }
 
-        for(let day = 1; day <= daysInMonth; day++) {
+        for (let day = 1; day <= daysInMonth; day++) {
             const date = viewDate.with({ day })
             const dayElement = document.createElement('div')
 
-            if(date.equals(currentDate)) {
+            if (date.equals(currentDate)) {
                 dayElement.classList.add('active')
             }
 
@@ -50,16 +49,23 @@ export const init = () => {
         calendarDays.appendChild(fragment)
     }
 
-    prevButton.addEventListener("click", () => {
+    function onPrev() {
         viewDate = viewDate.subtract({ months: 1 })
         renderCalendar()
-    })
+    }
 
-    nextButton.addEventListener("click", () => {
+    function onNext() {
         viewDate = viewDate.add({ months: 1 })
         renderCalendar()
-    })
+    }
+
+    prevButton.addEventListener("click", onPrev)
+    nextButton.addEventListener("click", onNext)
 
     renderCalendar()
 
+    return () => {
+        prevButton.removeEventListener("click", onPrev)
+        nextButton.removeEventListener("click", onNext)
+    }
 }

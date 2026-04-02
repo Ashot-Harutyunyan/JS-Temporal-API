@@ -1,12 +1,20 @@
 const base = new URL("..", import.meta.url).href
 
 const routes = {
-    404: { html: `${base}pages/404.html` },
+    404:            { html: `${base}pages/404.html` },
     "/":            { html: `${base}pages/digitalClock.html`, js: `${base}js/digitalClock.js` },
     "/analogClock": { html: `${base}pages/analogClock.html`,  js: `${base}js/analogClock.js` },
     "/calendar":    { html: `${base}pages/calendar.html`,     js: `${base}js/calendar.js` },
 }
+
+let cleanup = null
+
 const handleLocation = async () => {
+    if (cleanup) {
+        cleanup()
+        cleanup = null
+    }
+
     const path = window.location.hash.slice(1) || "/"
     const route = routes[path] || routes[404]
 
@@ -14,8 +22,12 @@ const handleLocation = async () => {
     document.querySelector("main").innerHTML = html
 
     if (route.js) {
-        const module = await import(route.js + "?t=" + Temporal.Now.instant().epochMilliseconds)
-        if (module.init) module.init()
+        try {
+            const module = await import(route.js)
+            if (module.init) cleanup = module.init()
+        } catch (error) {
+            console.error("Error loading module:", error)
+        }
     }
 }
 

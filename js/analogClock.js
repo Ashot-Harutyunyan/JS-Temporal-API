@@ -4,7 +4,7 @@ export const init = () => {
 
     const analogClock = document.querySelector('.analog-clock')
 
-    function createAnalogClockElement(tagName, {className, cssVars, text}) {
+    function createAnalogClockElement(tagName, { className, cssVars, text }) {
         const element = document.createElement(tagName)
         if (text !== null && text !== undefined) element.textContent = text
         if (className) element.classList.add(className)
@@ -39,6 +39,8 @@ export const init = () => {
     const hourHand = document.querySelector('.hour')
     const minuteHand = document.querySelector('.minute')
     const secondHand = document.querySelector('.second')
+    
+    let rafId
 
     function updateClock() {
         const now = Temporal.Now.zonedDateTimeISO()
@@ -55,9 +57,10 @@ export const init = () => {
         minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`
         secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`
 
-        requestAnimationFrame(updateClock)
+        rafId = requestAnimationFrame(updateClock)
     }
 
-    requestAnimationFrame(updateClock)
+    rafId = requestAnimationFrame(updateClock)
 
+    return () => cancelAnimationFrame(rafId)
 }
