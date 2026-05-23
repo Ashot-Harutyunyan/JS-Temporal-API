@@ -53,6 +53,7 @@ body {
 }
 .item.active {
   filter: drop-shadow(0 0 5px rgba(0, 255, 170, 0.5));
+  border-color: #00e5cc;
 }
 .digital-clock-img {
   width: 65px;
@@ -492,7 +493,10 @@ main {
   }
   .item {
     padding-bottom: 0;
-    border-bottom: none;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .digital-clock {
     gap: 20px;

@@ -31,6 +31,19 @@ const handleLocation = async () => {
     }
 }
 
+const updateActiveLink = () => {
+    const path = window.location.hash.slice(1) || '/'
+
+    document.querySelectorAll('.menu li').forEach(item => {
+        const link = item.querySelector('a')
+
+        item.classList.toggle(
+            'active',
+            link.dataset.route === path
+        )
+    })
+}
+
 document.querySelector("nav").addEventListener("click", (event) => {
     const link = event.target.closest("a")
     if (!link) return
@@ -38,5 +51,9 @@ document.querySelector("nav").addEventListener("click", (event) => {
     window.location.hash = link.href.split("#")[1]
 })
 
-window.onhashchange = handleLocation
+window.onhashchange = () => {
+    handleLocation()
+    updateActiveLink()
+}
 handleLocation()
+updateActiveLink()
