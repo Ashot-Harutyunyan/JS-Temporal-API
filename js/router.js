@@ -55,5 +55,6 @@ window.onhashchange = () => {
     handleLocation()
     updateActiveLink()
 }
+
 handleLocation()
 updateActiveLink()
